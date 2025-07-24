@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "490450274922",
+    "project_id": "jkb-firebase-app",
+    "storage_bucket": "jkb-firebase-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490450274922:android:3532256d42a5f6a85d5813",
+        "android_client_info": {
+          "package_name": "com.example.jkb_firebase_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbQ6EBcTdXQAMmy3LaNl8P3mSsqLlvl-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:490450274922:android:c99f70d6adeb50015d5813",
+        "android_client_info": {
+          "package_name": "com.jkb.jkb_firebase_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbQ6EBcTdXQAMmy3LaNl8P3mSsqLlvl-M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
