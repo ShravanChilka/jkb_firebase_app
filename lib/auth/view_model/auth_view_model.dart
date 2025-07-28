@@ -30,11 +30,15 @@ class AuthViewModel extends ChangeNotifier {
   }
 
   void register(RegisterRequestModel request) async {
-    _service.register(request);
+    await _service.register(request);
   }
 
   void login(LoginRequestModel request) async {
-    _service.login(request);
+    await _service.login(request);
+  }
+
+  void logout() async {
+    await _service.logout();
   }
 
   @override

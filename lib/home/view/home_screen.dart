@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jkb_firebase_app/home/view_model/home_view_model.dart';
+import 'package:jkb_firebase_app/profile/view/profile_screen.dart';
+import 'package:jkb_firebase_app/search/view/search_screen_provider.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -11,7 +13,6 @@ class HomeScreen extends StatelessWidget {
       selector: (_, vm) => vm.selectedDestinationIndex,
       builder: (context, selectedDestinationIndex, child) {
         return Scaffold(
-          appBar: AppBar(title: Text("Home")),
           bottomNavigationBar: NavigationBar(
             selectedIndex: selectedDestinationIndex,
             onDestinationSelected: (index) {
@@ -36,9 +37,9 @@ class HomeScreen extends StatelessWidget {
       case HomeNavigationDestination.home:
         return Container(color: Colors.red);
       case HomeNavigationDestination.search:
-        return Container(color: Colors.blue);
+        return SearchScreenProvider();
       case HomeNavigationDestination.profile:
-        return Container(color: Colors.yellow);
+        return ProfileScreen();
     }
   }
 }

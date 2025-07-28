@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jkb_firebase_app/auth/model/user_model.dart';
 import 'package:jkb_firebase_app/auth/view/auth_screen.dart';
 import 'package:jkb_firebase_app/auth/view_model/auth_view_model.dart';
-import 'package:jkb_firebase_app/home/view/home_screen.dart';
 import 'package:jkb_firebase_app/home/view/home_screen_provider.dart';
 import 'package:provider/provider.dart';
 

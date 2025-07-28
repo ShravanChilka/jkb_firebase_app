@@ -6,7 +6,6 @@ import 'package:jkb_firebase_app/auth/service/user_firebase_service.dart';
 
 class AuthFirebaseService {
   final _client = FirebaseAuth.instance;
-
   final _service = UserFirebaseService();
 
   Stream<UserModel?> getUserStream() {
@@ -42,5 +41,9 @@ class AuthFirebaseService {
     final user = _service.get(id);
     print('login success!');
     return user;
+  }
+
+  Future<void> logout() async {
+    await _client.signOut();
   }
 }
