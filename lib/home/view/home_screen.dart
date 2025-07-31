@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jkb_firebase_app/explore/view/explore_screen.dart';
 import 'package:jkb_firebase_app/home/view_model/home_view_model.dart';
 import 'package:jkb_firebase_app/profile/view/profile_screen.dart';
 import 'package:jkb_firebase_app/search/view/search_screen_provider.dart';
@@ -35,7 +36,7 @@ class HomeScreen extends StatelessWidget {
         HomeNavigationDestination.values[selectedDestinationIndex];
     switch (destination) {
       case HomeNavigationDestination.home:
-        return Container(color: Colors.red);
+        return ExploreScreen();
       case HomeNavigationDestination.search:
         return SearchScreenProvider();
       case HomeNavigationDestination.profile:

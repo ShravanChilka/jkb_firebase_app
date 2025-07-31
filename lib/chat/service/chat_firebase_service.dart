@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:jkb_firebase_app/auth/model/user_model.dart';
+import 'package:jkb_firebase_app/chat/model/chat_model.dart';
 import 'package:jkb_firebase_app/chat/model/message_model.dart';
 
 class ChatFirebaseService {
@@ -38,6 +39,8 @@ class ChatFirebaseService {
     final ref = _client.collection("chats").doc(chatId).collection("messages");
     final docRef = ref.doc();
 
+    await createChat(chatId: chatId, sender: sender, receiver: receiver);
+
     final model = MessageModel(
       id: docRef.id,
       message: message,
@@ -45,5 +48,20 @@ class ChatFirebaseService {
       sentBy: sender.id,
     );
     await ref.add(model.toMap());
+  }
+
+  Future<void> createChat({
+    required String chatId,
+    required UserModel sender,
+    required UserModel receiver,
+  }) async {
+    final ref = _client.collection("chats").doc(chatId);
+    final response = await ref.get();
+    if (response.exists) return;
+    final model = ChatModel(
+      id: chatId,
+      users: [sender.id, receiver.id]..sort(),
+    );
+    await ref.set(model.toMap());
   }
 }

@@ -19,6 +19,7 @@ dependencies:
   dartz: ^0.10.1
   firebase_auth: ^5.7.0
   firebase_ui_firestore: ^1.7.2
+  rxdart: ^0.28.0
 
 dev_dependencies:
   flutter_test:
