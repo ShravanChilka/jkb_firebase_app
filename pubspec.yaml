@@ -20,6 +20,8 @@ dependencies:
   firebase_auth: ^5.7.0
   firebase_ui_firestore: ^1.7.2
   rxdart: ^0.28.0
+  flutter_local_notifications: ^19.4.0
+  firebase_messaging: ^15.2.10
 
 dev_dependencies:
   flutter_test:

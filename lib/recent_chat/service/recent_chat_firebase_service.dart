@@ -8,8 +8,8 @@ import 'package:rxdart/rxdart.dart';
 class RecentChatFirebaseService {
   final _client = FirebaseFirestore.instance;
 
-  Stream<List<Stream<RecentChatModel>>> getAllRecentChats(String senderUserId) {
-    final chats = _client
+  Query<ChatModel> getAllRecentChats(String senderUserId) {
+    return _client
         .collection("chats")
         .where("users", arrayContains: senderUserId)
         .withConverter(
@@ -20,25 +20,24 @@ class RecentChatFirebaseService {
             return value.toMap();
           },
         );
+  }
 
-    final response = chats.snapshots().asyncMap((event) {
-      final chats = event.docs;
-      return chats.map((chat) {
-        final data = chat.data();
-        final chatId = data.id;
-        final users = chatId.split("_");
-        users.remove(senderUserId);
-        final receiverId = users.first;
-        final receiverStream = _getUser(receiverId);
-        final recentMessage = _getRecentMessage(chat);
-        final response = Rx.combineLatest2(receiverStream, recentMessage, (
-          receiver,
-          message,
-        ) {
-          return RecentChatModel(receiver: receiver, message: message);
-        });
-        return response;
-      }).toList();
+  Stream<RecentChatModel> getRecentChatStream({
+    required QueryDocumentSnapshot<ChatModel> snapshot,
+    required String senderUserId,
+  }) {
+    final data = snapshot.data();
+    final chatId = data.id;
+    final users = chatId.split("_");
+    users.remove(senderUserId);
+    final receiverId = users.first;
+    final receiverStream = _getUser(receiverId);
+    final recentMessageStream = _getRecentMessage(snapshot);
+    final response = Rx.combineLatest2(receiverStream, recentMessageStream, (
+      receiver,
+      message,
+    ) {
+      return RecentChatModel(receiver: receiver, message: message);
     });
     return response;
   }
